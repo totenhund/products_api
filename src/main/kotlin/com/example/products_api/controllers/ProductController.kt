@@ -23,6 +23,7 @@ class ProductController(val productService: ProductServiceImpl, val productAssem
     @RequestMapping("/add_product")
     fun addProduct(@Validated @RequestBody productDetails: Product): ResponseEntity<ProductVO> {
         val product = productService.addProduct(productDetails)
+        print(product.idQrCode)
         return ResponseEntity.ok(productAssembler.toProductVO(product))
     }
 

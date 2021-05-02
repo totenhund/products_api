@@ -13,11 +13,15 @@ class ProductComposition (
     @GeneratedValue(strategy = GenerationType.AUTO)
     var id: Long = 0,
 
-    @OneToMany(mappedBy = "id", cascade = [(CascadeType.ALL)])
+    @OneToMany(mappedBy = "productComp")
     @JsonManagedReference
     var foodAdditives: List<FoodAdditive> = emptyList(),
 
-    @OneToMany(mappedBy = "id", cascade = [(CascadeType.ALL)])
+    @OneToMany(mappedBy = "productComp")
     @JsonManagedReference
-    var foodIngredients: List<FoodIngredient> = emptyList()
+    var foodIngredients: List<FoodIngredient> = emptyList(),
+
+    @OneToOne(mappedBy = "productComposition")
+    var product: Product?
+
 )

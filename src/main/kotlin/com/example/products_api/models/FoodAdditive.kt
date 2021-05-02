@@ -9,5 +9,9 @@ class FoodAdditive (
     @GeneratedValue(strategy = GenerationType.AUTO)
     var id: Long = 0,
     @Column(name = "title", nullable = false)
-    var title: String = ""
+    var title: String = "",
+
+    @ManyToOne()
+    @JoinColumn(name="product_composition_id")
+    var productComp: ProductComposition?
 )

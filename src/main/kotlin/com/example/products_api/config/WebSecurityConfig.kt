@@ -15,8 +15,8 @@ class WebSecurityConfig() : WebSecurityConfigurerAdapter() {
     @Throws(Exception::class)
     override fun configure(http: HttpSecurity) {
         http.csrf().disable().authorizeRequests().antMatchers("/products").permitAll()
-                .and()
-                .addFilterBefore(JWTAuthenticationFilter(),
-                        UsernamePasswordAuthenticationFilter::class.java)
+//                .and()
+//                .addFilterBefore(JWTAuthenticationFilter(),
+//                        UsernamePasswordAuthenticationFilter::class.java)
     }
 }
