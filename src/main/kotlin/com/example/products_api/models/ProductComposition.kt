@@ -13,15 +13,19 @@ class ProductComposition (
     @GeneratedValue(strategy = GenerationType.AUTO)
     var id: Long = 0,
 
-    @OneToMany(mappedBy = "productComp")
-    @JsonManagedReference
-    var foodAdditives: List<FoodAdditive> = emptyList(),
-
-    @OneToMany(mappedBy = "productComp")
-    @JsonManagedReference
-    var foodIngredients: List<FoodIngredient> = emptyList(),
-
     @OneToOne(mappedBy = "productComposition")
-    var product: Product?
+    var product: Product? = null
+){
+    @OneToMany(
+            mappedBy = "productComp",
+            targetEntity = FoodAdditive::class
+    )
+    lateinit var foodAdditives: MutableList<FoodAdditive>
 
-)
+    @OneToMany(
+            mappedBy = "productComp",
+            targetEntity = FoodIngredient::class
+    )
+    lateinit var foodIngredients: MutableList<FoodIngredient>
+
+}

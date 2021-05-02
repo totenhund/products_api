@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component
 
 @Component
 class ProductAssembler {
-    fun toProductVO(product: Product): ProductVO{
-        return ProductVO(product.idQrCode, product.productName, parseProductComposition(product.productComposition))
+    fun toProductVO(product: Product): ProductVO? {
+        return product.productComposition?.let { parseProductComposition(it) }?.let { ProductVO(product.idQrCode, product.productName, it) }
     }
 
     private fun parseProductComposition(productComposition: ProductComposition): ProductCompositionVO{
